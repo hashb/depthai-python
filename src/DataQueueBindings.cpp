@@ -106,6 +106,7 @@ void DataQueueBindings::bind(pybind11::module& m, void* pCallstack){
 
             return d;
         }, DOC(dai, DataOutputQueue, get, 2))
+        .def("getWithTimeout", static_cast<std::shared_ptr<ADatatype>(DataOutputQueue::*)()>(&DataOutputQueue::get), py::arg("maxSize"), DOC(dai, DataOutputQueue, get, 2))
         .def("has", static_cast<bool(DataOutputQueue::*)()>(&DataOutputQueue::has), DOC(dai, DataOutputQueue, has, 2))
         .def("tryGet", static_cast<std::shared_ptr<ADatatype>(DataOutputQueue::*)()>(&DataOutputQueue::tryGet), DOC(dai, DataOutputQueue, tryGet, 2))
         .def("tryGetAll", static_cast<std::vector<std::shared_ptr<ADatatype>>(DataOutputQueue::*)()>(&DataOutputQueue::tryGetAll), DOC(dai, DataOutputQueue, tryGetAll, 2))
